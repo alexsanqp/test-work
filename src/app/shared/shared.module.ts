@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GalleryButtonComponent } from './gallary-button/gallery-button.component';
+import { BehaviorButtonComponent } from './behavior-button/behavior-button.component';
 
 @NgModule({
     imports     : [
         CommonModule,
     ],
     declarations: [
-        GalleryButtonComponent,
+        BehaviorButtonComponent,
     ],
     exports     : [
         CommonModule,
-        GalleryButtonComponent,
+        BehaviorButtonComponent,
     ],
 })
 export class SharedModule {

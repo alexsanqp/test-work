@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
+import { FeatureModule } from '@app/feature';
 
 @NgModule({
     imports     : [
@@ -13,8 +14,10 @@ import { SharedModule } from '@app/shared';
             appId: 'enkonix',
         }),
         AppRoutingModule,
+
         CoreModule,
-        SharedModule
+        SharedModule,
+        FeatureModule,
     ],
     declarations: [
         AppComponent,

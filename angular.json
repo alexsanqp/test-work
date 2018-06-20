@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "plus",
       "schematics": {},
       "architect": {
         "build": {
@@ -151,12 +151,12 @@
       "spec": false,
       "inlineStyle": true,
       "inlineTemplate": true,
-      "prefix": "app",
+      "prefix": "plus",
       "styleext": "scss"
     },
     "@schematics/angular:directive": {
       "spec": false,
-      "prefix": "app"
+      "prefix": ""
     },
     "@schematics/angular:guard": {
       "spec": false

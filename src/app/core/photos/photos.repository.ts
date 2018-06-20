@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, EMPTY } from 'rxjs';
 
-import { IPhoto, IRepository } from '../interfaces';
+import { IRepository } from '../interfaces';
 import { CoreModule } from '../core.module';
 import { PhotosService } from './photos.service';
+import { IPhoto } from './photo.interface';
 
 @Injectable({
     providedIn: CoreModule,
@@ -13,8 +14,6 @@ export class PhotosRepository implements IRepository<IPhoto> {
     private photos: IPhoto[];
 
     public constructor(private protoService: PhotosService) {
-        console.log('PhotosRepository');
-
         this.photos = [];
     }
 

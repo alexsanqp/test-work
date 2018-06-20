@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import {
     HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable, EMPTY, pipe } from 'rxjs';
+import { Observable, EMPTY } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { environment } from '@env/environment';
 
 @Injectable()
 export class LogRequestInterceptors implements HttpInterceptor {
@@ -16,15 +17,19 @@ export class LogRequestInterceptors implements HttpInterceptor {
         return next.handle(req).pipe(
             map((res: HttpResponse<any>) => {
 
-                console.warn(
-                    `Request for ${req.urlWithParams} took ${(Date.now() - started)} ms.`,
-                );
+                if (environment.production === false) {
+                    console.warn(
+                        `Request for ${req.urlWithParams} took ${(Date.now() - started)} ms.`,
+                    );
+                }
 
                 return res;
             }),
             catchError((err: HttpErrorResponse) => {
                 if (err instanceof HttpErrorResponse) {
-                    console.error(err.message);
+                    if (environment.production === false) {
+                        console.error(err.message);
+                    }
                 }
 
                 return EMPTY;

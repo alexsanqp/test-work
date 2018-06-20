@@ -3,9 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CoreModule } from '../core.module';
 import { BaseService } from '../base';
-import { IPhoto } from '../interfaces';
-
-
+import { IPhoto } from './photo.interface';
 
 @Injectable({
     providedIn: CoreModule,

@@ -17,7 +17,6 @@ import { LogRequestInterceptors } from './interceptors';
             multi   : true,
         },
     ],
-    exports     : [],
 })
 export class CoreModule {
     public constructor(
