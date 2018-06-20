@@ -4,16 +4,20 @@ import { isPlatformBrowser } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CoreModule } from '@app/core';
+import { SharedModule } from '@app/shared';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-    ],
     imports     : [
         BrowserModule.withServerTransition({
             appId: 'enkonix',
         }),
         AppRoutingModule,
+        CoreModule,
+        SharedModule
+    ],
+    declarations: [
+        AppComponent,
     ],
     providers   : [],
     bootstrap   : [AppComponent],
@@ -24,9 +28,9 @@ export class AppModule {
         @Inject(APP_ID) private appId: string,
     ) {
         const platform = isPlatformBrowser(platformId)
-            ? 'in the browser'
-            : 'on the server';
+            ? 'Browser'
+            : 'Server';
 
-        console.log(`Running ${platform} with appId=${appId}`);
+        console.log(`${platform} = ${appId}`);
     }
 }
