@@ -9,6 +9,9 @@
     padding-top: 120px;
     padding-bottom: 90px;
     background: linear-gradient(45deg, #fbac7f, #e5658a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     .media-container-column > * {
       width: 100%;

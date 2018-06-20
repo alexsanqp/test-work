@@ -1,11 +1,10 @@
 <div id="home-container">
-    <h1 class="home-section-title py-3 mbr-fonts-style display-1">{{title}}</h1>
+    <plus-title [title]="title"></plus-title>
 
-    <div class="mbr-section-btn py-4">
+    <div class="plus-section-btn py-4">
         <plus-behavior-button
                 [delay]="400"
                 [title]="galleryLinkTitle"
-                [clearEventAfterClick]="true"
                 (afterDelay)="onAfterDelay($event);"
                 (beforeDelay)="onBeforeDelay($event);"
                 (clicked)="onClicked($event);"></plus-behavior-button>
