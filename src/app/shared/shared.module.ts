@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BehaviorButtonComponent } from './behavior-button/behavior-button.component';
 import { TitleComponent } from './title/title.component';
+import { PlusPaginationComponent } from './pagination/plus-pagination.component';
 
 @NgModule({
     imports     : [
@@ -10,11 +11,13 @@ import { TitleComponent } from './title/title.component';
     declarations: [
         BehaviorButtonComponent,
         TitleComponent,
+        PlusPaginationComponent
     ],
     exports     : [
         CommonModule,
         BehaviorButtonComponent,
-        TitleComponent
+        TitleComponent,
+        PlusPaginationComponent
     ],
 })
 export class SharedModule {
