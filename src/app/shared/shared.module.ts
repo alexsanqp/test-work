@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BehaviorButtonComponent } from './behavior-button/behavior-button.component';
 import { TitleComponent } from './title/title.component';
 import { PlusPaginationComponent } from './pagination/plus-pagination.component';
+import { PopupWindowComponent } from './popup-window/popup-window.component';
 
 @NgModule({
     imports     : [
@@ -11,13 +12,15 @@ import { PlusPaginationComponent } from './pagination/plus-pagination.component'
     declarations: [
         BehaviorButtonComponent,
         TitleComponent,
-        PlusPaginationComponent
+        PlusPaginationComponent,
+        PopupWindowComponent
     ],
     exports     : [
         CommonModule,
         BehaviorButtonComponent,
         TitleComponent,
-        PlusPaginationComponent
+        PlusPaginationComponent,
+        PopupWindowComponent
     ],
 })
 export class SharedModule {
