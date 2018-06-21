@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable, EMPTY } from 'rxjs';
+import { Observable, EMPTY, of } from 'rxjs';
 
 import { IRepository } from '../interfaces';
 import { CoreModule } from '../core.module';
 import { PhotosService } from './photos.service';
 import { IPhoto } from './photo.interface';
+import { map } from 'rxjs/internal/operators';
 
 @Injectable({
     providedIn: CoreModule,
@@ -37,13 +38,13 @@ export class PhotosRepository implements IRepository<IPhoto> {
         return EMPTY;
     }
 
-    public findAll(): IPhoto[] {
+    public findAll(): Observable<IPhoto[]> {
         if (this.photos.length === 0) {
-            this.protoService.getAll().subscribe((response: IPhoto[]) => {
-                this.photos = response;
-            });
+            return this.protoService.getAll().pipe(
+                map((photos) => this.photos = photos)
+            );
         }
 
-        return this.photos;
+        return of(this.photos);
     }
 }
