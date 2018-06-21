@@ -1,0 +1,182 @@
+$grid-breakpoints: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px
+);
+
+@import '~bootstrap/scss/bootstrap-grid';
+
+$white: #fff;
+$color_christi_approx: #61b812;
+$color_flamingo_approx: #e76022;
+$dodger_blue: #1e90ff;
+$color_persian_red_approx: #da312e;
+$color_galliano_approx: #dbb701;
+$color_cerulean_approx: #02b9e3;
+$color_brick_red_approx: #d22a4e;
+
+//@extend-elements
+%extend_1 {
+  text-decoration: none;
+  color: $white;
+  position: relative;
+  overflow: hidden;
+  transition: -webkit-transform 0.1s;
+}
+
+%extend_2 {
+  position: absolute;
+  bottom: 5px;
+  font-size: 14px;
+}
+
+%extend_3 {
+  font-size: 60px;
+  text-align: center;
+  display: block;
+  margin-top: 30px;
+}
+
+.plus-gallery {
+  padding: 20px 0;
+  height: 100%;
+
+  &__inner {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    .plus-gallery-item {
+      & > a {
+        padding: 5px;
+
+        & > div {
+          width: 100%;
+          height: inherit;
+        }
+      }
+
+      & > a img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .gallery-pagination {
+      position: relative;
+      width: 100%;
+      margin: 20px 0;
+    }
+  }
+
+  a {
+    &.wide {
+      @extend %extend_1;
+      h2 {
+        @extend %extend_2;
+        &.top {
+          position: static;
+          font-size: 14px;
+        }
+      }
+      i {
+        @extend %extend_3;
+      }
+      &:hover {
+        transform: scale(1.05);
+      }
+      &:active {
+      }
+    }
+    &.box {
+      @extend %extend_1;
+      h2 {
+        @extend %extend_2;
+        &.top {
+          position: static;
+          font-size: 14px;
+        }
+      }
+      i {
+        @extend %extend_3;
+      }
+      &:hover {
+        transform: scale(1.05);
+      }
+      &:active {
+      }
+    }
+  }
+
+  .wide {
+    width: 270px;
+    height: 120px;
+    overflow: hidden;
+    font-size: 13px;
+    display: block;
+    float: left;
+  }
+
+  .box {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    font-size: 13px;
+    display: block;
+    float: left;
+  }
+
+  .lime {
+    background: $color_christi_approx;
+  }
+
+  .orange {
+    background: $color_flamingo_approx;
+  }
+
+  .blue {
+    background: $dodger_blue;
+  }
+
+  .redgay {
+    background: $color_persian_red_approx;
+  }
+
+  .yellow {
+    background: $color_galliano_approx;
+  }
+
+  .bluefish {
+    background: $color_cerulean_approx;
+  }
+
+  .magenta {
+    background: $color_brick_red_approx;
+  }
+
+  @include media-breakpoint-down(xs) {
+    .wide, .box {
+      width: 100% !important;
+      height: auto;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+
+    .wide, .box {
+      height: auto;
+    }
+    .wide {
+      width: 100%;
+    }
+    .box {
+      width: 50%;
+    }
+  }
+
+}

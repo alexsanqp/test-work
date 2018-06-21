@@ -1,0 +1,24 @@
+<div class="plus-gallery">
+    <div class="plus-gallery__inner">
+        <div class="plus-gallery-item">
+            <a href="javascript://"
+               *ngFor="let photo of photoList;let index = index;"
+               [ngClass]="getClassBlock(index)">
+                <div ngClass="getColorClassBlock()">
+                    <img [src]="photo.thumbnailUrl" [alt]="photo.title">
+                </div>
+            </a>
+        </div>
+
+        <div class="gallery-pagination">
+            <plus-pagination
+                    [pagesToShow]="6"
+                    [page]="page"
+                    [perPage]="limit"
+                    [count]="total"
+                    (goPage)="goToPage($event)"
+                    (goNext)="onNext()"
+                    (goPrev)="onPrev()"></plus-pagination>
+        </div>
+    </div>
+</div>
