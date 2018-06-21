@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent, GalleryComponent, PageNotFoundComponent } from '@app/feature';
+import { PhotoResolve } from '@app/core';
 
 const routes: Routes = [
     {
@@ -10,6 +11,9 @@ const routes: Routes = [
     {
         path     : 'gallery',
         component: GalleryComponent,
+        resolve  : {
+            photos: PhotoResolve,
+        },
     },
     {
         path      : '',
@@ -17,14 +21,15 @@ const routes: Routes = [
         pathMatch : 'full',
     },
     {
-        path: '**',
-        component: PageNotFoundComponent
+        path     : '**',
+        component: PageNotFoundComponent,
     },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule],
+    imports  : [RouterModule.forRoot(routes)],
+    exports  : [RouterModule],
+    providers: [PhotoResolve],
 })
 export class AppRoutingModule {
 }
