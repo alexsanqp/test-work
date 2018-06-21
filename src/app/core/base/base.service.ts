@@ -9,6 +9,7 @@ export abstract class BaseService {
     public constructor(protected httpClient: HttpClient) {}
 
     /**
+     * Return url api with action
      *
      * @param {string} action
      * @return {string}
