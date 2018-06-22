@@ -2,6 +2,7 @@
   "name": "enkonix",
   "version": "0.0.0",
   "scripts": {
+    "start": "ng serve -o --live-reload=false",
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
     "serve:ssr": "node dist/server",
     "build:client-and-server-bundles": "ng build --prod && ng run enkonix:server",
