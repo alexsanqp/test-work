@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { APP_ID, Inject, NgModule, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -13,6 +14,7 @@ import { FeatureModule } from '@app/feature';
         BrowserModule.withServerTransition({
             appId: 'enkonix',
         }),
+        BrowserAnimationsModule,
         AppRoutingModule,
 
         CoreModule,

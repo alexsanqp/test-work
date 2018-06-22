@@ -1,5 +1,6 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { LogRequestInterceptors } from './interceptors';
@@ -7,7 +8,8 @@ import { LogRequestInterceptors } from './interceptors';
 @NgModule({
     imports     : [
         CommonModule,
-        HttpClientModule
+        HttpClientModule,
+        RouterModule
     ],
     declarations: [],
     providers   : [

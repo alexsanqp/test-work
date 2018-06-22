@@ -1,20 +1,37 @@
+$grid-breakpoints: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px
+);
+
+@import '~bootstrap/scss/bootstrap-grid';
+
 $hoverDuration: 170ms;
 $borderColor: rgba(0, 0, 0, .1);
 
-.clear{
+.clear {
   &:after,
-  &:before{
+  &:before {
     content: "";
     display: table;
   }
-  &:after{
+  &:after {
     clear: both;
   }
 }
 
+.hidden {
+  visibility: hidden;
+}
+
+.disabled {
+  opacity: 0.3;
+}
+
 .pagination__wrapper {
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, white 17%, white 83%, rgba(255, 255, 255, 0) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#00ffffff', GradientType=1);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #a95d5e 17%, #d6756f 83%, rgba(255, 255, 255, 0) 100%);
   text-align: center;
   width: 100%;
   height: 50px;
@@ -37,6 +54,113 @@ $borderColor: rgba(0, 0, 0, .1);
   &:after {
     bottom: -1px;
   }
+
+  .pagination {
+    display: inline-block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @extend .clear;
+
+    li {
+      display: block;
+      float: left;
+      padding: 5px;
+      min-width: 40px;
+
+      &:first-child {
+        border: none;
+      }
+    }
+
+    button, span {
+      background: none;
+      border: none;
+      border-radius: 50%;
+      box-sizing: border-box;
+      color: rgba(255, 255, 255, 0.5);
+      display: block;
+      font-size: 16px;
+      line-height: 40px;
+      padding: 0;
+      color: white;
+    }
+
+    button {
+      outline: none;
+      position: relative;
+      transition: all 170ms linear;
+      height: 40px;
+      min-width: 40px;
+
+      &:before {
+        background: rgba(0, 0, 0, .2);
+        border-radius: 50%;
+        content: "";
+        cursor: pointer;
+        height: 0;
+        left: 50%;
+        opacity: 0;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        transition: all $hoverDuration linear;
+        top: 50%;
+        width: 0;
+      }
+
+      &:hover:not(.active) {
+        color: rgba(0, 0, 0, 1);
+
+        &:before {
+          animation: hoverAnimation ($hoverDuration * 3) linear forwards;
+          height: 40px;
+          width: 40px;
+        }
+      }
+
+      &.active {
+        background: rgba(0, 0, 0, .1);
+        color: rgba(0, 0, 0, 1);
+      }
+    }
+
+    .prev, .next {
+      font-size: 14px;
+    }
+
+    @include media-breakpoint-down(xs) {
+      & {
+        display: flex;
+      }
+      li {
+        &.useful-page-item {
+          flex: 1;
+        }
+
+        &.utility-page-item {
+          display: none;
+        }
+        &:first-child, &:last-child {
+          position: absolute;
+          top: -50px;
+          left: 0;
+
+          button {
+            color: #ddd;
+          }
+        }
+        &:last-child {
+          left: unset;
+          right: 0;
+        }
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+
+    }
+  }
 }
 
 @keyframes hoverAnimation {
@@ -45,81 +169,5 @@ $borderColor: rgba(0, 0, 0, .1);
   }
   to {
     opacity: 0;
-  }
-}
-
-.pagination {
-  display: inline-block;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-
-  @extend .clear;
-
-  li {
-    //border-left: 1px solid rgba(0,0,0,.2);
-    display: block;
-    float: left;
-    padding: 5px;
-
-    &:first-child {
-      border: none;
-    }
-  }
-
-  button,
-  span {
-    background: none;
-    border: none;
-    border-radius: 50%;
-    box-sizing: border-box;
-    color: rgba(0, 0, 0, .6);
-    display: block;
-    font-size: 16px;
-    height: 40px;
-    line-height: 40px;
-    min-width: 40px;
-    padding: 0;
-  }
-
-  button {
-    outline: none;
-    position: relative;
-    transition: all 170ms linear;
-
-    &:before {
-      background: rgba(0, 0, 0, .2);
-      border-radius: 50%;
-      content: "";
-      cursor: pointer;
-      height: 0;
-      left: 50%;
-      opacity: 0;
-      position: absolute;
-      transform: translate(-50%, -50%);
-      transition: all $hoverDuration linear;
-      top: 50%;
-      width: 0;
-    }
-
-    &:hover:not(.active) {
-      color: rgba(0, 0, 0, 1);
-
-      &:before {
-        animation: hoverAnimation ($hoverDuration * 3) linear forwards;
-        height: 40px;
-        width: 40px;
-      }
-    }
-
-    &.active {
-      background: rgba(0, 0, 0, .1);
-      color: rgba(0, 0, 0, 1);
-    }
-  }
-
-  .prev,
-  .next {
-    font-size: 14px;
   }
 }

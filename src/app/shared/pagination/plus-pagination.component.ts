@@ -1,5 +1,10 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, HostListener } from '@angular/core';
 import { IPagination } from './pagination.interface';
+
+export enum KEY_CODE {
+    RIGHT_ARROW = 39,
+    LEFT_ARROW = 37
+}
 
 @Component({
     selector   : 'plus-pagination',
@@ -33,6 +38,17 @@ export class PlusPaginationComponent implements IPagination {
 
     public constructor() { }
 
+    @HostListener('window:keyup', ['$event'])
+    public keyEvent(event: KeyboardEvent) {
+        if (event.keyCode === KEY_CODE.RIGHT_ARROW) {
+            this.onNext();
+        }
+
+        if (event.keyCode === KEY_CODE.LEFT_ARROW) {
+            this.onPrev();
+        }
+    }
+
     public getMin(): number {
         return ((this.perPage * this.page) - this.perPage) + 1;
     }
@@ -54,8 +70,8 @@ export class PlusPaginationComponent implements IPagination {
         this.goPrev.emit(true);
     }
 
-    public onNext(next: boolean): void {
-        this.goNext.emit(next);
+    public onNext(): void {
+        this.goNext.emit(true);
     }
 
     public totalPages(): number {
@@ -91,5 +107,13 @@ export class PlusPaginationComponent implements IPagination {
         pages.sort((a, b) => a - b);
 
         return pages;
+    }
+
+    public isVisiblePrev() {
+        return !(this.page !== 1 && this.page > this.pagesToShow - 2);
+    }
+
+    public isVisibleNext() {
+        return this.page > this.totalPages() - 4;
     }
 }

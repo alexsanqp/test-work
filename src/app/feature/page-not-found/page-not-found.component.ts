@@ -1,19 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'plus-page-not-found',
-    template: `
-        <p>
-            page-not-found works!
-        </p>
-    `,
-    styles  : [],
+    selector   : 'plus-page-not-found',
+    templateUrl: './page-not-found.component.html',
+    styleUrls  : ['./page-not-found.component.scss'],
 })
 export class PageNotFoundComponent implements OnInit {
 
-    constructor() { }
+    public constructor() { }
 
-    ngOnInit() {
+    public ngOnInit() {
     }
-
 }

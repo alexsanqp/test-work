@@ -3,11 +3,13 @@ import {
 } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { IPopupImage } from './popup-image.interface';
+import { heightAnimation } from '@app/core/animations';
 
 @Component({
     selector   : 'plus-popup-image',
     templateUrl: './popup-window.component.html',
     styleUrls  : ['./popup-window.component.scss'],
+    animations : [heightAnimation],
 })
 export class PopupWindowComponent implements OnInit, OnDestroy {
     @Input()
@@ -52,10 +54,15 @@ export class PopupWindowComponent implements OnInit, OnDestroy {
     }
 
     private show(): void {
+        this.isOpen = true;
+
         this.modalRef.nativeElement.childNodes[0].style.display = 'block';
     }
 
     private hide(): void {
+        this.isOpen = false;
+        this.img    = null;
+
         this.modalRef.nativeElement.childNodes[0].style.display = 'none';
     }
 }

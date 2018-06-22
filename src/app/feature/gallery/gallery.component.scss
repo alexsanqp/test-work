@@ -22,8 +22,7 @@ $color_brick_red_approx: #d22a4e;
   text-decoration: none;
   color: $white;
   position: relative;
-  overflow: hidden;
-  transition: -webkit-transform 0.1s;
+  transition: transform 0.1s;
 }
 
 %extend_2 {
@@ -40,7 +39,8 @@ $color_brick_red_approx: #d22a4e;
 }
 
 .plus-gallery {
-  padding: 20px 0;
+  position: relative;
+  padding: 60px 0 20px 0;
   height: 100%;
 
   &__inner {
@@ -50,13 +50,25 @@ $color_brick_red_approx: #d22a4e;
     align-items: center;
     justify-content: space-between;
 
-    .plus-gallery-item {
+    .plus-gallery-back {
+      position: absolute;
+      top: 18px;
+      left: 0;
+      cursor: pointer;
+    }
+
+    .plus-gallery-block {
+      min-height: 360px;
+
       & > a {
         padding: 5px;
+        animation-duration: 2s;
+        animation-name: bounceIn;
 
         & > div {
           width: 100%;
-          height: inherit;
+          height: 100%;
+          box-shadow: 0px -2px 9px 0px rgba(0, 0, 0, 0.35);
         }
       }
 
@@ -70,7 +82,7 @@ $color_brick_red_approx: #d22a4e;
     .gallery-pagination {
       position: relative;
       width: 100%;
-      margin: 20px 0;
+      margin: 50px 0;
     }
   }
 
@@ -114,9 +126,8 @@ $color_brick_red_approx: #d22a4e;
   }
 
   .wide {
-    width: 270px;
+    width: 240px;
     height: 120px;
-    overflow: hidden;
     font-size: 13px;
     display: block;
     float: left;
@@ -125,7 +136,6 @@ $color_brick_red_approx: #d22a4e;
   .box {
     width: 120px;
     height: 120px;
-    overflow: hidden;
     font-size: 13px;
     display: block;
     float: left;
@@ -179,4 +189,18 @@ $color_brick_red_approx: #d22a4e;
     }
   }
 
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.03);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
 }

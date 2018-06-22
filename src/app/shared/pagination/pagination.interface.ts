@@ -3,7 +3,7 @@ export interface IPagination {
 
     onPrev(): void;
 
-    onNext(next: boolean): void;
+    onNext(): void;
 
     totalPages(): number;
 

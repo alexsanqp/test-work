@@ -1,5 +1,12 @@
-.plus-section-btn {
-  margin-left: -.25rem;
-  margin-right: -.25rem;
-  font-size: 0;
+#home-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .plus-section-btn {
+    margin-left: -.25rem;
+    margin-right: -.25rem;
+    font-size: 0;
+  }
 }

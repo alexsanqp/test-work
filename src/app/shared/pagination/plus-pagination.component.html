@@ -8,32 +8,33 @@
                     (click)="onPrev()">&lt; Previous
             </button>
         </li>
-        <li *ngIf="page !== 1 && page > pagesToShow - 2">
-            <button title="first page - page 1" (click)="onPage(1)">1</button>
+        <li class="utility-page-item">
+            <button [class.hidden]="isVisiblePrev()"
+                    title="first page - page 1" (click)="onPage(1)">1</button>
         </li>
 
-        <li *ngIf="page !== 1">
-            <span>...</span>
+        <li class="utility-page-item">
+            <span [class.hidden]="isVisiblePrev()">...</span>
         </li>
 
-        <li *ngFor="let pageNum of getPages()">
+        <li class="useful-page-item" *ngFor="let pageNum of getPages()">
             <button [ngClass]="{'active': pageNum === page, 'disabled': loading}"
                     (click)="onPage(pageNum)">{{ pageNum }}
             </button>
         </li>
 
-        <li *ngIf="!lastPage()">
-            <span>...</span>
+        <li class="utility-page-item">
+            <span [class.hidden]="isVisibleNext()">...</span>
         </li>
 
-        <li *ngIf="!lastPage()">
-            <button title="last page" (click)="onPage(totalPages())">{{totalPages()}}</button>
+        <li class="utility-page-item">
+            <button [class.hidden]="isVisibleNext()" title="last page" (click)="onPage(totalPages())">{{totalPages()}}</button>
         </li>
 
         <li>
             <button class="next" [disabled]="lastPage() || loading"
                     [ngClass]="{ 'disabled': lastPage() || loading }"
-                    (click)="onNext(true)">Next &gt;
+                    (click)="onNext()">Next &gt;
             </button>
         </li>
     </ul>

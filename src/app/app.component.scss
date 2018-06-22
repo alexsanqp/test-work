@@ -1,3 +1,13 @@
+$grid-breakpoints: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px
+);
+
+@import '~bootstrap/scss/bootstrap-grid';
+
 #main-page {
   &, .header {
     width: 100%;
@@ -5,19 +15,8 @@
   }
 
   & .header {
+    display: flex;
     background-color: #f18c84;
     background: linear-gradient(45deg, #fbac7f, #e5658a);
-
-    & > .container {
-      height: 100%;
-    }
-
-    .media-container-column > * {
-      width: 100%;
-    }
-
-    .media-container-column {
-      height: 100%
-    }
   }
 }
