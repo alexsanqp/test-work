@@ -1,6 +1,6 @@
-# Gallery
+# Angular gallery with server side rendering
 
-Fake gallery
+Fake gallery [Demo](https://enkonix.pro-beauty.com.ua)
 
 ## Development server
 
@@ -12,5 +12,5 @@ Run `npm run build:ssr`
 
 ## Server ssr
 
-Run `npm run serve:ssr` and Navigate to `http://localhost:40001/`
+Run `npm run serve:ssr` and Navigate to `http://localhost:4000/`
 

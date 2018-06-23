@@ -170,6 +170,12 @@ $color_brick_red_approx: #d22a4e;
   }
 
   @include media-breakpoint-down(xs) {
+
+    .gallery-pagination {
+      position: fixed;
+      bottom: 0;
+      margin: 5px 0;
+    }
     .wide, .box {
       width: 100% !important;
       height: auto;
@@ -177,6 +183,12 @@ $color_brick_red_approx: #d22a4e;
   }
 
   @include media-breakpoint-down(sm) {
+
+    .gallery-pagination {
+      position: fixed;
+      bottom: 0;
+      margin: 5px 0;
+    }
 
     .wide, .box {
       height: auto;

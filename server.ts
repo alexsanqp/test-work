@@ -38,7 +38,7 @@ if (process.env.NODE_ENV === 'production') {
     );
 }
 
-const httpsServer = https.createServer(credentials, app);
+
 
 app.engine('html', ngExpressEngine({
     bootstrap: AppServerModuleNgFactory,
@@ -58,10 +58,14 @@ app.get('*', (req, res) => {
     res.render('index', {req});
 });
 
-httpsServer.listen(PORT, () => {
-    console.log(`Node server listening on ${PORT}`);
-});
+if (process.env.NODE_ENV === 'production') {
+    const httpsServer = https.createServer(credentials, app);
 
-app.listen(4001, () => {
-    console.log(`Node server listening on 4001`);
-});
+    httpsServer.listen(PORT, () => {
+        console.log(`Node server listening on ${PORT} | ${process.env.NODE_ENV}`);
+    });
+} else {
+    app.listen(PORT, () => {
+        console.log(`Node server listening on ${PORT} | ${process.env.NODE_ENV}`);
+    });
+}
