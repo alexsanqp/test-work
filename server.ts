@@ -19,14 +19,23 @@ const DIST_FOLDER = join(process.cwd(), 'dist');
 const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require('./dist/server/main');
 
 const credentials = {
-    key : null,
-    cert: null,
+    key               : null,
+    cert              : null,
+    ca                : null,
+    requestCert       : false,
+    rejectUnauthorized: false,
 };
 
 if (process.env.NODE_ENV === 'production') {
     credentials.key  = fs.readFileSync('/etc/letsencrypt/live/pro-beauty.com.ua/privkey.pem',
-        'utf8');
-    credentials.cert = fs.readFileSync('/etc/letsencrypt/live/pro-beauty.com.ua/cert.pem', 'utf8');
+        'utf8'
+    );
+    credentials.cert = fs.readFileSync('/etc/letsencrypt/live/pro-beauty.com.ua/cert.pem',
+        'utf8'
+    );
+    credentials.ca   = fs.readFileSync('/etc/letsencrypt/live/pro-beauty.com.ua/chain.pem',
+        'utf8'
+    );
 }
 
 const httpsServer = https.createServer(credentials, app);
@@ -50,5 +59,9 @@ app.get('*', (req, res) => {
 });
 
 httpsServer.listen(PORT, () => {
-    console.log(`Node server listening on http://localhost:${PORT}`);
+    console.log(`Node server listening on ${PORT}`);
+});
+
+app.listen(4001, () => {
+    console.log(`Node server listening on 4001`);
 });
