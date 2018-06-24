@@ -135,17 +135,29 @@ export class GalleryComponent implements OnInit, OnDestroy, IPager {
     }
 
     public onNext(): void {
-        this.page++;
-        this.getPhotoOffset();
+        if (this.isPageNextExists(this.page)) {
+            this.page++;
+            this.getPhotoOffset();
+        }
     }
 
     public onPrev(): void {
-        this.page--;
-        this.getPhotoOffset();
+        if (this.isPagePrevExists(this.page)) {
+            this.page--;
+            this.getPhotoOffset();
+        }
     }
 
     public totalPages(): number {
         return Math.ceil(this.total / this.limit) || 0;
+    }
+
+    public isPageNextExists(page: number): boolean {
+        return ++page <= this.totalPages();
+    }
+
+    public isPagePrevExists(page: number): boolean {
+        return --page >= 1;
     }
 
     private onPageHandler(): void {

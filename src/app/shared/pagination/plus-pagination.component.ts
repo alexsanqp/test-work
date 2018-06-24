@@ -114,6 +114,6 @@ export class PlusPaginationComponent implements IPagination {
     }
 
     public isVisibleNext() {
-        return this.page > this.totalPages() - 4;
+        return this.page > this.totalPages() - 3;
     }
 }
