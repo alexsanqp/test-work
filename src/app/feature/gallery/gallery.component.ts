@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { map } from 'rxjs/internal/operators';
 import { Subscriber } from 'rxjs';
 
@@ -26,7 +26,7 @@ export class GalleryComponent implements OnInit, OnDestroy, IPager {
     public image: Subject<IPopupImage>;
 
     private subs: Subscriber<any>;
-    private schameGrid: number[];
+    private schemeGrid: number[];
 
     public constructor(
         private route: ActivatedRoute,
@@ -51,16 +51,19 @@ export class GalleryComponent implements OnInit, OnDestroy, IPager {
         this.limit       = 21;
         this.pagesToShow = 6;
 
-        this.schameGrid = [2, 8, 11, 16, 17, 20];
+        this.schemeGrid = [2, 8, 11, 16, 17, 20];
     }
 
     public ngOnInit() {
+        this.page = this.route.snapshot.queryParams.page || this.page;
+
         const subRouteDada = this.route.data.pipe(
             map((data) => data['photos']),
         ).subscribe(
             (photos) => {
                 if (photos) {
                     this.photos = photos;
+                    this.total  = this.photos.length;
                     this.getPhotoOffset();
                 }
             },
@@ -74,12 +77,13 @@ export class GalleryComponent implements OnInit, OnDestroy, IPager {
     }
 
     public getPhotoOffset() {
-        this.total     = this.photos.length;
+        this.onPageHandler();
+
         this.photoList = this.paginate(this.photos, this.limit, this.page);
     }
 
     public getClassBlock(index: number): string {
-        if (this.schameGrid.indexOf(index) > -1) {
+        if (this.schemeGrid.indexOf(index) > -1) {
             return 'wide';
         }
 
@@ -138,5 +142,29 @@ export class GalleryComponent implements OnInit, OnDestroy, IPager {
     public onPrev(): void {
         this.page--;
         this.getPhotoOffset();
+    }
+
+    public totalPages(): number {
+        return Math.ceil(this.total / this.limit) || 0;
+    }
+
+    private onPageHandler(): void {
+        const total = this.totalPages();
+
+        if (total >= this.page) {
+            const queryParams: Params = Object.assign(
+                {},
+                this.route.snapshot.queryParams,
+            );
+
+            queryParams['page'] = this.page;
+
+            this.router.navigate([], {
+                relativeTo : this.route,
+                queryParams: queryParams,
+            });
+        } else {
+            this.router.navigate(['/404']);
+        }
     }
 }
