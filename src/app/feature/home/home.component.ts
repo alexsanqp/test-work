@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     ) {
         this.title            = 'A gallery containing the most beautiful images';
         this.galleryLinkTitle = 'GALLERY';
-        this.delayLoad        = 250;
+        this.delayLoad        = 100;
 
         this.subPhotos = new Subscription();
     }

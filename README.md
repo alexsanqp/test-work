@@ -1,6 +1,6 @@
 # Angular gallery with server side rendering
 
-Fake gallery [Demo](https://enkonix.pro-beauty.com.ua)
+Fake gallery [Demo](http://enkonix.pro-beauty.com.ua:4000)
 
 ## Development server
 
