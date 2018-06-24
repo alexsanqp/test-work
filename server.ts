@@ -38,8 +38,6 @@ if (process.env.NODE_ENV === 'production') {
     );
 }
 
-
-
 app.engine('html', ngExpressEngine({
     bootstrap: AppServerModuleNgFactory,
     providers: [
