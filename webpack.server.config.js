@@ -14,7 +14,7 @@ module.exports = {
     },
     target: 'node',
     mode: 'none',
-    externals: [/node_modules/],
+    externals: [/(node_modules|main\..*\.js)/],
     output: {
         path: path.join(__dirname, 'dist'),
         filename: '[name].js'
