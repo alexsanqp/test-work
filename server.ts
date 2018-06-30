@@ -21,9 +21,9 @@ const DIST_FOLDER = path.join(process.cwd(), 'dist');
 const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require('./dist/server/main');
 
 const credentials = {
-    key               : fs.readFileSync(process.env.SSL_KEY, 'utf8') || null,
-    cert              : fs.readFileSync(process.env.SSL_CERT, 'utf8') || null,
-    ca                : fs.readFileSync(process.env.SSL_CA, 'utf8') || null,
+    key               : process.env.SSL_KEY ? fs.readFileSync(process.env.SSL_KEY, 'utf8') : null,
+    cert              : process.env.SSL_CERT ? fs.readFileSync(process.env.SSL_CERT, 'utf8') : null,
+    ca                : process.env.SSL_CA ? fs.readFileSync(process.env.SSL_CA, 'utf8') : null,
     requestCert       : false,
     rejectUnauthorized: false,
 };
