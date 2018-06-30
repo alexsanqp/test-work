@@ -1,6 +1,6 @@
-# Angular gallery with server side rendering
+# Angular gallery example with a server side rendering
 
-Fake gallery [Demo](http://enkonix.pro-beauty.com.ua:4000)
+[Demo](https://enkonix.pro-beauty.com.ua)
 
 ## Development server
 
@@ -12,5 +12,14 @@ Run `npm run build:ssr`
 
 ## Server ssr
 
-Run `npm run serve:ssr` and Navigate to `http://localhost:4000/`
+Create file `.env`
+
+```txt
+NODE_ENV=dev
+PORT=443
+SSL_KEY=./localssl/server.key
+SSL_CERT=./localssl/server.pem
+```
+
+Run `npm run serve:ssr` and Navigate to `{protocol}://localhost:{port}/`
 
